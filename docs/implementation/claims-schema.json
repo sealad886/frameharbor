@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:frameharbor:claims:1",
+  "title": "FrameHarbor independent evidence claim draft",
+  "description": "M0 draft transport contract. Evidence assertions require independent receipts; schema validity alone proves no recovery fact. Decoder result cannot upgrade temporal correctness, ownership or coverage. Mixed artifacts carry per-span provenance plus explicit synthesized transformations. Transport names map kebab-case enum labels to Rust variants: provenance -> Claims.bytes, decoder -> Claims.decode, metadata-supported-owner -> Ownership::MetadataSupported; other labels use equivalent PascalCase variants. Rust Claims::validate additionally checks KnownGaps recovered < listed; schema validation alone cannot compare sibling counters.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provenance",
+    "ownership",
+    "structure",
+    "decoder",
+    "temporal",
+    "coverage",
+    "schema_version",
+    "sample_exact",
+    "original_file_bytes_preserved",
+    "sample_evidence",
+    "coverage_denominator",
+    "transformations",
+    "limitations"
+  ],
+  "properties": {
+    "provenance": {
+      "type": "string",
+      "enum": [
+        "acquisition-supported",
+        "synthesized",
+        "unavailable",
+        "binding-unverified"
+      ]
+    },
+    "ownership": {
+      "type": "string",
+      "enum": [
+        "metadata-supported-owner",
+        "shared-geometry",
+        "historical-conflict",
+        "unresolved"
+      ]
+    },
+    "structure": {
+      "type": "string",
+      "enum": [
+        "valid",
+        "repaired-with-recorded-edits",
+        "invalid",
+        "untested"
+      ]
+    },
+    "decoder": {
+      "type": "string",
+      "enum": [
+        "strict-pass",
+        "failure",
+        "untested",
+        "timed-out",
+        "unsupported"
+      ]
+    },
+    "temporal": {
+      "type": "string",
+      "enum": [
+        "original-mapping-supported",
+        "constrained-hypothesis",
+        "unresolved"
+      ]
+    },
+    "coverage": {
+      "type": "string",
+      "enum": [
+        "complete-within-known-layout",
+        "known-gaps",
+        "unknown-total"
+      ]
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "sample_exact": {
+      "type": "boolean"
+    },
+    "original_file_bytes_preserved": {
+      "type": "boolean"
+    },
+    "sample_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bytes",
+        "identity",
+        "order",
+        "timing",
+        "configuration",
+        "audio",
+        "staged_artifact_compared"
+      ],
+      "properties": {
+        "bytes": {
+          "type": "boolean"
+        },
+        "identity": {
+          "type": "boolean"
+        },
+        "order": {
+          "type": "boolean"
+        },
+        "timing": {
+          "type": "boolean"
+        },
+        "configuration": {
+          "type": "boolean"
+        },
+        "audio": {
+          "type": "boolean"
+        },
+        "staged_artifact_compared": {
+          "type": "boolean"
+        }
+      },
+      "description": "bytes/identity/order/timing/configuration/audio map directly to Rust SampleVerification. audio=true requires verified original audio behavior or evidenced absence of original audio; omitted audio is not a pass. staged_artifact_compared records that verification examined the reopened artifact."
+    },
+    "coverage_denominator": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope",
+            "unit",
+            "total"
+          ],
+          "properties": {
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unit": {
+              "enum": [
+                "bytes",
+                "samples",
+                "ticks",
+                "recordings"
+              ]
+            },
+            "total": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      ]
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "sample_exact": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "provenance": {
+            "const": "acquisition-supported"
+          },
+          "ownership": {
+            "const": "metadata-supported-owner"
+          },
+          "temporal": {
+            "const": "original-mapping-supported"
+          },
+          "structure": {
+            "enum": [
+              "valid",
+              "repaired-with-recorded-edits"
+            ]
+          },
+          "sample_evidence": {
+            "properties": {
+              "bytes": {
+                "const": true
+              },
+              "identity": {
+                "const": true
+              },
+              "order": {
+                "const": true
+              },
+              "timing": {
+                "const": true
+              },
+              "configuration": {
+                "const": true
+              },
+              "audio": {
+                "const": true
+              },
+              "staged_artifact_compared": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "coverage": {
+            "enum": [
+              "complete-within-known-layout",
+              "known-gaps"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "coverage_denominator": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "original_file_bytes_preserved": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "transformations": {
+            "maxItems": 0
+          },
+          "provenance": {
+            "const": "acquisition-supported"
+          }
+        }
+      }
+    }
+  ]
+}

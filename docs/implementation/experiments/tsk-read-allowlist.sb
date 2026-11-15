@@ -1,0 +1,19 @@
+(version 1)
+; EXPERIMENTAL, not yet qualified or enabled by the Rust adapter.
+; Intended allowlist: compiled helper/runtime data; source bytes use IPC only.
+(allow default)
+(deny network*)
+(deny process-fork)
+(deny file-write*)
+(deny file-read-data)
+(allow file-read-data
+    (literal (param "HELPER"))
+    (subpath "/System")
+    (subpath "/usr/lib")
+    (subpath "/usr/local/lib")
+    (subpath "/opt/homebrew/opt/libewf")
+    (subpath "/opt/homebrew/Cellar/libewf/20140817_1")
+    (subpath "/private/var/db/dyld")
+    (literal "/dev/random")
+    (literal "/dev/urandom")
+    (literal "/dev/null"))

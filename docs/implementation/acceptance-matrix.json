@@ -1,0 +1,389 @@
+{
+  "schema_version": 1,
+  "status": "M0 corpus specification with selected exposed-development coverage crosswalk; full media qualification pending",
+  "source": "../planning/image-first-video-restoration/DESIGN.md#60-mp4-damage-decision-matrix",
+  "primary_stratum": "ordinary_mp4",
+  "raw_annex_b_enabled": false,
+  "rows": [
+    {
+      "id": "ordinary-intact",
+      "stratum": "ordinary_mp4",
+      "condition": "extent map and moov/tables/media intact",
+      "permitted_result": "exact supported original samples and timing; original file bytes only if unchanged",
+      "fixture_cases": [
+        {
+          "id": "intact-fragmented-avc-audio",
+          "classification": "positive",
+          "oracle": "Head/tail moov; interleaved audio; 16 KiB/128 KiB splits inside NAL prefixes and audio samples",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "intact-hevc-bframes-vfr",
+          "classification": "positive",
+          "oracle": "Original DTS/PTS, durations, descriptions and edits retained",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "intact-stale-reused-owner",
+          "classification": "ambiguous",
+          "oracle": "Decodable reused bytes cannot authenticate pre-damage ownership",
+          "status": "specified_not_generated"
+        }
+      ],
+      "selected_development_coverage": {
+        "scope": "selected_unchanged_original_profiles",
+        "test_references": [
+          "tests/bmff.rs",
+          "tests/bmff_extents.rs",
+          "tests/validation.rs::actual_staged_avc_hevc_audio_and_timing_match_source_then_decode_in_full",
+          "tests/runner.rs::real_controller_exports_exact_media_and_adopts_completed_index_and_publication_on_resume"
+        ],
+        "limitations": "Broader edits/descriptions/configuration families and contiguous carving remain unqualified.",
+        "evidence_class": "exposed_synthetic_development_not_blind_acceptance"
+      }
+    },
+    {
+      "id": "ordinary-missing-media",
+      "stratum": "ordinary_mp4",
+      "condition": "extent map and tables intact; some mdat absent or overwritten",
+      "permitted_result": "known gaps; exact surviving dependency-safe samples, never complete original",
+      "fixture_cases": [
+        {
+          "id": "missing-reference-sample",
+          "classification": "negative",
+          "oracle": "Missing reference propagates dependency exclusion",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "missing-independent-interval",
+          "classification": "positive",
+          "oracle": "Retain only complete supported intervals with original timing",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "stale-valid-video-under-map-hole",
+          "classification": "negative",
+          "oracle": "Nonfinished acquisition data never enters supported output",
+          "status": "specified_not_generated"
+        }
+      ],
+      "selected_development_coverage": {
+        "scope": "selected_closed_idr_salvage_and_negative_controls",
+        "test_references": [
+          "tests/segments.rs",
+          "tests/runner.rs::damaged_payload_controller_publishes_later_idr_segment_with_explicit_remainder"
+        ],
+        "limitations": "AVC IDR/HEVC type20 conservative interval selection only; complete recording and missing-reference reconstruction are not claimed.",
+        "evidence_class": "exposed_synthetic_development_not_blind_acceptance"
+      }
+    },
+    {
+      "id": "ordinary-damaged-extents",
+      "stratum": "ordinary_mp4",
+      "condition": "extent map damaged; usable moov/tables survive",
+      "permitted_result": "exact only with independent placement; otherwise alternatives/unresolved",
+      "fixture_cases": [
+        {
+          "id": "independent-placement-anchor",
+          "classification": "positive",
+          "oracle": "Independently evidenced piecewise placement yields correct samples",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "equal-length-decodable-copies",
+          "classification": "ambiguous",
+          "oracle": "Two physical owners match sizes and decode; no unique original",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "logical-offset-as-image-offset",
+          "classification": "negative",
+          "oracle": "stco/co64 logical offsets cannot be used as disk addresses",
+          "status": "specified_not_generated"
+        }
+      ],
+      "selected_development_coverage": {
+        "scope": "ownership_and_bounds_negative_controls",
+        "test_references": [
+          "tests/filesystem.rs::deleted_partial_crosslinked_and_bitmap_free_metadata_never_promote_owner_exactness",
+          "tests/filesystem.rs::caller_geometry_cannot_expand_the_bound_source_image"
+        ],
+        "limitations": "Independent positive placement reconstruction across damaged extents remains unqualified.",
+        "evidence_class": "exposed_synthetic_development_not_blind_acceptance"
+      }
+    },
+    {
+      "id": "ordinary-missing-tables",
+      "stratum": "ordinary_mp4",
+      "condition": "extent map intact; moov missing or partly damaged",
+      "permitted_result": "known payload order; unsupported boundaries/timing/audio remain unresolved",
+      "fixture_cases": [
+        {
+          "id": "partial-target-table-interval",
+          "classification": "positive",
+          "oracle": "Only surviving supported sample/timing evidence qualifies",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "donor-plausible-wrong-timing",
+          "classification": "negative",
+          "oracle": "Matching donor config does not supply target table or DTS/PTS",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "lost-boundaries-interleaved-audio",
+          "classification": "ambiguous",
+          "oracle": "No fabricated AAC boundaries, track sync or constant frame rate",
+          "status": "specified_not_generated"
+        }
+      ],
+      "selected_development_coverage": {
+        "scope": "unresolved_and_rejection_controls",
+        "test_references": [
+          "tests/bmff.rs::missing_tables_external_references_and_wrong_cardinality_never_become_exact",
+          "tests/runner.rs::missing_target_metadata_remains_unresolved_without_stopping_other_valid_files",
+          "tests/runner.rs::corrupt_sample_count_is_unresolved_without_stopping_other_valid_files"
+        ],
+        "limitations": "General partial-table salvage and donor-assisted table reconstruction are not implemented or qualified.",
+        "evidence_class": "exposed_synthetic_development_not_blind_acceptance"
+      }
+    },
+    {
+      "id": "ordinary-missing-extents-and-tables",
+      "stratum": "ordinary_mp4",
+      "condition": "both extent map and moov materially missing",
+      "permitted_result": "qualified supported segments or unresolved; no guaranteed whole-file reconstruction",
+      "fixture_cases": [
+        {
+          "id": "isolated-supported-anchor",
+          "classification": "positive",
+          "oracle": "Return only independently supported interval",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "repeated-gops-no-owner",
+          "classification": "ambiguous",
+          "oracle": "Two original orders consistent with surviving bytes remain alternatives",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "bounded-search-exhausted",
+          "classification": "negative",
+          "oracle": "Cap exhaustion cannot imply absence or completeness",
+          "status": "specified_not_generated"
+        }
+      ],
+      "selected_development_coverage": {
+        "scope": "explicit_unresolved_scope",
+        "test_references": [
+          "tests/filesystem.rs::deleted_partial_crosslinked_and_bitmap_free_metadata_never_promote_owner_exactness",
+          "tests/bmff.rs::missing_tables_external_references_and_wrong_cardinality_never_become_exact"
+        ],
+        "limitations": "No combined-loss positive salvage qualification; optional uncertain reconstruction/search remains disabled.",
+        "evidence_class": "exposed_synthetic_development_not_blind_acceptance"
+      }
+    },
+    {
+      "id": "fmp4-intact",
+      "stratum": "iso_fmp4",
+      "condition": "initialization and evidenced fragment membership/placement survive",
+      "permitted_result": "target-supported sample order/timing and explicit gaps, independent of disk fragmentation",
+      "fixture_cases": [
+        {
+          "id": "evidenced-fragment-runs",
+          "classification": "positive",
+          "oracle": "Multiple traf/trun, default overrides, supported absolute/relative offsets and nonadjacent mdat",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "reset-counters-other-recording",
+          "classification": "ambiguous",
+          "oracle": "Equal track IDs/config/sequence/tfdt do not prove membership",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "unsupported-addressing",
+          "classification": "negative",
+          "oracle": "Explicit unsupported outcome rather than MSE restrictions applied universally",
+          "status": "specified_not_generated"
+        }
+      ],
+      "selected_development_coverage": {
+        "scope": "selected_established_file_fragment_profiles",
+        "test_references": [
+          "tests/fragmented.rs",
+          "tests/validation.rs::fragmented_target_segments_are_independently_mapped_and_fully_validated",
+          "tests/runner.rs::fragmented_profile_controller_routes_to_qualified_transformed_outputs"
+        ],
+        "limitations": "Fragments are not joined across unrelated logical owners, reset chronology or matching configuration alone.",
+        "evidence_class": "exposed_synthetic_development_not_blind_acceptance"
+      }
+    },
+    {
+      "id": "fmp4-missing-init-or-fragments",
+      "stratum": "iso_fmp4",
+      "condition": "initialization missing or some moof/payload fragments lost",
+      "permitted_result": "isolated supported runs; missing initialization may prevent decode; gaps explicit",
+      "fixture_cases": [
+        {
+          "id": "target-config-supported-run",
+          "classification": "positive",
+          "oracle": "Surviving attributed configuration and complete run permit segment",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "missing-init-no-compatible-config",
+          "classification": "negative",
+          "oracle": "Undecodable/unvalidated cannot be published playable",
+          "status": "specified_not_generated"
+        },
+        {
+          "id": "donor-and-reset-sequences",
+          "classification": "ambiguous",
+          "oracle": "Donor does not establish missing chronology or recording membership",
+          "status": "specified_not_generated"
+        }
+      ],
+      "selected_development_coverage": {
+        "scope": "selected_missing_payload_and_negative_controls",
+        "test_references": [
+          "tests/fragmented.rs::missing_fragment_payload_keeps_owner_ordinals_flags_and_known_sample_hashes",
+          "tests/fragmented.rs::missing_init_defaults_timestamps_bad_bases_and_sequence_resets_stay_unresolved"
+        ],
+        "limitations": "Missing initialization/configuration may prevent playback; general isolated-fragment recovery remains unqualified.",
+        "evidence_class": "exposed_synthetic_development_not_blind_acceptance"
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "id": "acquisition_coverage",
+      "numerator": "finished bytes",
+      "denominator": "bound rescue-domain bytes",
+      "qualification": "Unknown binding prevents acquisition-supported claim"
+    },
+    {
+      "id": "scan_coverage",
+      "numerator": "eligible bytes actually scanned",
+      "denominator": "eligible bytes in declared search scope",
+      "qualification": "Scope and cutoff explicit"
+    },
+    {
+      "id": "metadata_evaluation",
+      "numerator": "recognized objects evaluated",
+      "denominator": "recognized objects discovered",
+      "qualification": "Unsupported/capped objects counted separately"
+    },
+    {
+      "id": "search_evaluation",
+      "numerator": "hypotheses evaluated",
+      "denominator": "hypotheses generated within declared rules",
+      "qualification": "Unknown global universe; generated/evaluated/rejected/unresolved/skipped counted"
+    },
+    {
+      "id": "exact_sample_precision",
+      "numerator": "samples matching bytes/identity/order/timing/config",
+      "denominator": "samples claimed exact",
+      "qualification": "Undefined if zero claimed; never 100% from empty set"
+    },
+    {
+      "id": "known_byte_recovery",
+      "numerator": "correct original sample bytes recovered",
+      "denominator": "known original sample bytes",
+      "qualification": "Unknown when original denominator absent"
+    },
+    {
+      "id": "known_time_recovery",
+      "numerator": "correct original video time recovered",
+      "denominator": "known original video time",
+      "qualification": "Unknown without supported timing/total"
+    },
+    {
+      "id": "false_accepted_joins",
+      "numerator": "wrong accepted original-order boundaries",
+      "denominator": "independently evaluated accepted boundaries",
+      "qualification": "Correlated variants not independent trials; undefined for zero boundaries"
+    },
+    {
+      "id": "unique_physical_yield",
+      "numerator": "union length of supported recovered physical intervals",
+      "denominator": "declared eligible image bytes, if reporting a fraction",
+      "qualification": "Absolute union bytes always; no duplicate export inflation"
+    },
+    {
+      "id": "logical_yield",
+      "numerator": "supported file identities and independently playable intervals",
+      "denominator": "known original identities/intervals only when known",
+      "qualification": "Report counts with aliases/clones; unknown real original total"
+    },
+    {
+      "id": "read_amplification",
+      "numerator": "metered source bytes read",
+      "denominator": "declared scanned bytes",
+      "qualification": "Metadata/extract/hash rereads separately metered; N/A if no scan"
+    },
+    {
+      "id": "index_density",
+      "numerator": "allocated index bytes",
+      "denominator": "image GiB",
+      "qualification": "Report logical vs allocated separately"
+    },
+    {
+      "id": "throughput",
+      "numerator": "completed encoded bytes/samples/video seconds appropriate to profile",
+      "denominator": "measured wall seconds",
+      "qualification": "Timing-unknown raw uses bytes/access units, never guessed duration"
+    },
+    {
+      "id": "resource_cost",
+      "numerator": "read/write bytes, CPU/wall seconds, peak RSS, allocated scratch/index/output, probe counts",
+      "denominator": "per image and whole family; wall seconds for rates",
+      "qualification": "No blended recovery percentage"
+    },
+    {
+      "id": "resume_overhead",
+      "numerator": "incremental checkpoint writes and verification bytes/time",
+      "denominator": "uninterrupted completed logical work or end-to-end time, as named",
+      "qualification": "Adopted work and semantic equality separately"
+    },
+    {
+      "id": "checkpoint_overhead",
+      "numerator": "checkpoint wall seconds",
+      "denominator": "end-to-end wall seconds",
+      "qualification": "N/A before pipeline exists"
+    },
+    {
+      "id": "candidate_density",
+      "numerator": "canonical candidate/posting counts",
+      "denominator": "declared evaluated bytes or queries",
+      "qualification": "Percentiles/cardinality and visited work; N/A before index enabled"
+    }
+  ],
+  "coverage_note": "Original fixture-case statuses describe complete specified corpus cases. Selected tests below may exercise only part of a case; they do not certify an entire damage-matrix row or blind acceptance.",
+  "final_gate": {
+    "integrated_suite": {
+      "status": "passed_selected_synthetic_suite",
+      "tests_passed": 212,
+      "test_targets": 28,
+      "failed": 0,
+      "ignored": 0,
+      "log": "target/verification-final/frameharbor-final-integrated.log",
+      "log_sha256": "50c335bfaa90f75b6814f3ba5028d8d2bed70943881a391cd7d85e176f133fe1",
+      "toolchain": "Rust 1.98.1; offline locked"
+    },
+    "prospective_evaluation": {
+      "status": "passed_bounded_procedural_controls_only",
+      "cases_passed": 7,
+      "original_configuration_families": 2,
+      "correlated_variants": true,
+      "whole_m10_passed": false,
+      "document": "PROSPECTIVE_EVALUATION.md",
+      "receipt": "target/prospective-evaluation/run-20261109T220255Z/receipt.json",
+      "receipt_sha256": "1933d4848920e1dbf4adc4fa8afd7224c8491a941235795e22a96ad129f8bc71",
+      "scope": "Four intact AVC/HEVC x FAT32/exFAT cases, two metadata acquisition holes, overlapping-map rejection; four actual outputs independently fully decoded."
+    },
+    "representative_hardware": "not_qualified",
+    "external_camera_acceptance": "not_qualified",
+    "real_image_rollout": "requires_separate_authorization"
+  }
+}
