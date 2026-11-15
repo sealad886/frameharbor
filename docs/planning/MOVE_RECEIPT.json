@@ -1,0 +1,158 @@
+{
+  "project": "FrameHarbor",
+  "operation": "atomic directory rename; moved not copied",
+  "completed_at": "2026-11-09T16:13:48.664223+00:00",
+  "source": "/Users/andrew/zRepos/videorebuild/docs/designs/image-first-video-restoration",
+  "destination": "/Users/andrew/zRepos/frameharbor/docs/planning/image-first-video-restoration",
+  "source_directory_absent": true,
+  "planning_file_count": 16,
+  "planning_total_bytes": 978846,
+  "all_original_hashes_preserved": true,
+  "all_original_device_inode_pairs_preserved": true,
+  "files": [
+    {
+      "relative_path": "CONSENSUS_RESEARCH.md",
+      "bytes": 1320,
+      "sha256": "822f2f211c14f8aeda54e8ec31032131a3b6b03e2144c2bd306b2ed0ce89ceb8",
+      "device": 16777229,
+      "inode": 1712635048
+    },
+    {
+      "relative_path": "DESIGN.md",
+      "bytes": 51506,
+      "sha256": "5db51aa6f6272557aadc7dd20118877b81a20c92cc473b7a06769ef424ed6c9a",
+      "device": 16777229,
+      "inode": 1712574950
+    },
+    {
+      "relative_path": "DIRECTORY_PROBE.json",
+      "bytes": 1630,
+      "sha256": "339940508bcaa56bb96de4d0fff4ff8169c6435d48fb06b4b283fb7680104f8f",
+      "device": 16777229,
+      "inode": 1712613034
+    },
+    {
+      "relative_path": "EVIDENCE.md",
+      "bytes": 16994,
+      "sha256": "4dbea08d16df16db8a0067b840d7d528cd235038920001b1894ad4d0414f01ee",
+      "device": 16777229,
+      "inode": 1712635041
+    },
+    {
+      "relative_path": "FILESYSTEM_PROBE.json",
+      "bytes": 762534,
+      "sha256": "4b1053342150caea77798aac178df3e87c0c70dc7991eb1827f1a3c41aefdf10",
+      "device": 16777229,
+      "inode": 1712588177
+    },
+    {
+      "relative_path": "FILE_ENTRY_PROBE.json",
+      "bytes": 1880,
+      "sha256": "9b9752a4ab47bf4f75f6a65151389acabc57171811b6610010b8f955099fe298",
+      "device": 16777229,
+      "inode": 1712631640
+    },
+    {
+      "relative_path": "IMAGE_INVENTORY.json",
+      "bytes": 12796,
+      "sha256": "ac9353a8d9c42bfb30e328fecc5655f95ecf44fa0dbee61c1be855bc4ac70e94",
+      "device": 16777229,
+      "inode": 1712570152
+    },
+    {
+      "relative_path": "IMPLEMENTATION_PLAN.md",
+      "bytes": 40844,
+      "sha256": "dd12f4671ac5e1c1a0e737999d8bc24fe119e1d4b22f8ce329b5e69decc392d7",
+      "device": 16777229,
+      "inode": 1712585987
+    },
+    {
+      "relative_path": "README.md",
+      "bytes": 4338,
+      "sha256": "466e5c45dc55348c2cba35f1f574d0a2eeef93f2a9e677ab90998b50ffc4b466",
+      "device": 16777229,
+      "inode": 1712775128
+    },
+    {
+      "relative_path": "RESEARCH_PROVENANCE.json",
+      "bytes": 4397,
+      "sha256": "e0ed1b39563079630cca83cc5edd19a02d87e1fb6040b98fb73b73eda88ff914",
+      "device": 16777229,
+      "inode": 1712775129
+    },
+    {
+      "relative_path": "REVIEW_RECEIPT.json",
+      "bytes": 2221,
+      "sha256": "d07adc71e19c3c19d94f6d8a2dec48ae699dc31df593be551bd2473f3d0a65e2",
+      "device": 16777229,
+      "inode": 1712777944
+    },
+    {
+      "relative_path": "research/Examine the scientific evidence for a practical, pro-consumer grade VIDEO FILE R.md",
+      "bytes": 45202,
+      "sha256": "5155785bdcd37c301f3e1bf2285d9420c0fd3c4ab04648dead7efc371073251d",
+      "device": 16777229,
+      "inode": 1712577862
+    },
+    {
+      "relative_path": "research/mp4/Examine the scientific evidence for a practical, pro-consumer grade VIDEO FILE R.md",
+      "bytes": 29372,
+      "sha256": "b6b3275da36d7b07aa99aad9a0bcfaa03717b0cd854458103996d621d2988737",
+      "device": 16777229,
+      "inode": 1716857842
+    },
+    {
+      "relative_path": "research/mp4/receipt.json",
+      "bytes": 589,
+      "sha256": "ef8c2a0b7a5602ad9a423ab11243371e22c6cad767c605f6b793895150231fc3",
+      "device": 16777229,
+      "inode": 1716857843
+    },
+    {
+      "relative_path": "research/receipt.json",
+      "bytes": 500,
+      "sha256": "9ecbb8f85135af0b3fc3d88bed17f72815bacfbd7ad0c4066bc60f680cce92f8",
+      "device": 16777229,
+      "inode": 1712577863
+    },
+    {
+      "relative_path": "research/reviews/initial-design-review.json",
+      "bytes": 2723,
+      "sha256": "c31c43da3f2363caa14a976bf815c169ed4bbd48a1e1ac546ac608de9c8be1c8",
+      "device": 16777229,
+      "inode": 1716916416
+    }
+  ],
+  "historical_path_resolution": {
+    "docs/designs/image-first-video-restoration/": "docs/planning/image-first-video-restoration/"
+  },
+  "new_scaffold_files_sha256": {
+    "Cargo.toml": "201d543d1c537f8b0f5d12434ae79ebb0a3762b69b7422247306fb2789d1096b",
+    "START_PROMPT.md": "af3259ab489ca4b80c743afad2a98fcc02bdd0069d6be6a94e7f4c079bc0ede5",
+    "README.md": "68051a95eaaa3c0ac8ee58953d5afd245ea2ac6198b64bcce3cb3fdfec940e64",
+    ".gitignore": "deb756b0bfde008536afed6a7adc02164a4b2597f7034e09fa0bb724ff302fbb",
+    "AGENTS.md": "cd0e337754e3dc4263fe076bc8697b7cb9ca3ae052db3e29eb0ae454264c8e8e",
+    "tests/README.md": "5a46bfef52f6c16e3bb493ec6e267f954934594428f16c8f5c32e8e180af9027",
+    "benches/README.md": "f89500134c9e5be1673a47376ab8883b892588e898c37a488902578442988db1",
+    "src/main.rs": "385ca165c8d1cfaf61433bac3f7d026d94a5e0d3ffbce3b0234acdca6e00ecfb",
+    "docs/planning/README.md": "f58764f13ffeba34144e081d462d2ea5ffd6c7a66e60e8b05925301f2aba5bad",
+    "docs/planning/RELOCATION.md": "3335b686ce332bdfb3a2220cd87030fd40203dc8d253a32a1a08a3e019bfa434"
+  },
+  "previous_checkout": {
+    "path": "/Users/andrew/zRepos/videorebuild",
+    "head": "ea8e786cf13878b3874ec38f8a65a07ba5074e32",
+    "branch": "codex/video-folder-comparison",
+    "excluded_files_preserved": 11
+  },
+  "repository_and_code_setup_removed_at_user_request": true,
+  "removed_own_scaffold_files": [
+    "Cargo.toml",
+    ".gitignore",
+    "AGENTS.md",
+    "src/main.rs",
+    "tests/README.md",
+    "benches/README.md"
+  ],
+  "empty_git_initialization_removed": true,
+  "remaining_workspace": "folders, planning documents, README and START_PROMPT only"
+}

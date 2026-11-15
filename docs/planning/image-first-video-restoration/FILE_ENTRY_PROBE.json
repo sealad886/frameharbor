@@ -1,0 +1,41 @@
+{
+  "scope": "Read-only bounded two file metadata entries and one nonrecursive month directory; no export/decode",
+  "runs": [
+    {
+      "command": [
+        "/usr/local/bin/istat",
+        "-f",
+        "fat",
+        "/Volumes/recovery_external/KITCHEN_Rescue_new.img",
+        "1034"
+      ],
+      "exit_code": 0,
+      "stdout": "Directory Entry: 1034\nAllocated\nFile Attributes: File, Archive\nSize: 0\nName: 202607~1.H26\n\nDirectory Entry Times:\nWritten:\t2026-07-15 12:31:00 (IST)\nAccessed:\t2026-07-15 00:00:00 (IST)\nCreated:\t2026-07-15 12:31:01 (IST)\n\nSectors:\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/local/bin/istat",
+        "-f",
+        "fat",
+        "/Volumes/recovery_external/KITCHEN_Rescue_new.img",
+        "1031"
+      ],
+      "exit_code": 0,
+      "stdout": "Directory Entry: 1031\nNot Allocated\nFile Attributes: File, Archive\nSize: 3407236\nName: _02610~1.MP4\n\nDirectory Entry Times:\nWritten:\t2026-10-29 23:02:02 (GMT)\nAccessed:\t2026-10-29 00:00:00 (GMT)\nCreated:\t2026-10-29 23:02:02 (GMT)\n\nSectors:\n75101924 75101925 75101926 75101927 75101928 75101929 75101930 75101931 \n75101932 75101933 75101934 75101935 75101936 75101937 75101938 75101939 \n75101940 75101941 75101942 75101943 75101944 75101945 75101946 75101947 \n75101948 75101949 75101950 75101951 75101952 75101953 75101954 75101955 \n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/local/bin/fls",
+        "-f",
+        "exfat",
+        "/Volumes/recovery_external/BlinkDrive_Rescue_new.img",
+        "466947"
+      ],
+      "exit_code": 0,
+      "stdout": "d/d 487427:\t26-09-21\nd/d 487430:\t26-09-22\nd/d 487433:\t26-09-23\nd/d 487436:\t26-09-24\nd/d 487439:\t26-09-25\nd/d 487442:\t26-09-26\nd/d 487445:\t26-09-27\nd/d 487448:\t26-09-28\nd/d 487451:\t26-09-29\nd/d 487454:\t26-09-30\n",
+      "stderr": ""
+    }
+  ]
+}

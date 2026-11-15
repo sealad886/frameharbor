@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-09",
+  "user_budget_hours_per_image": 24,
+  "consensus_thread_id": "xZP280cBTBm7hnlwuQBaXA",
+  "consensus_interaction_id": "32t7lsIBTy2VimhLvse8Kg",
+  "consensus_report_sha256": "5155785bdcd37c301f3e1bf2285d9420c0fd3c4ab04648dead7efc371073251d",
+  "individually_fetched_papers": [
+    {
+      "id": "367e96807d825a98a4d03ed6f4b120ad",
+      "title": "Frame-Based Recovery of Corrupted Video Files Using Video Codec Specifications",
+      "url": "https://consensus.app/papers/framebased-recovery-of-corrupted-video-files-using-video-na-shim/367e96807d825a98a4d03ed6f4b120ad/?utm_source=chatgpt",
+      "metadata": {
+        "authors": "Gi-Hyun Na, Kyu-Sun Shim, K. Moon, Seong G. Kong, Eun-Soo Kim, Joong Lee",
+        "publish_year": "2014",
+        "journal": "IEEE Transactions on Image Processing",
+        "volume": "23",
+        "pages": "517-526",
+        "citation_count": "40"
+      },
+      "scope": "Record and abstract fetched; numerical experiments not independently reproduced"
+    },
+    {
+      "id": "dcf168e4e3695a709e1a318f80980562",
+      "title": "A study on multimedia file carving method",
+      "url": "https://consensus.app/papers/a-study-on-multimedia-file-carving-method-yoo-park/dcf168e4e3695a709e1a318f80980562/?utm_source=chatgpt",
+      "metadata": {
+        "authors": "Byeongyeong Yoo, Jungheum Park, Sungsu Lim, Jewan Bang, Sang-Jin Lee",
+        "publish_year": "2011",
+        "journal": "Multimedia Tools and Applications",
+        "volume": "61",
+        "pages": "243 - 261",
+        "citation_count": "34"
+      },
+      "scope": "Record and abstract fetched; numerical experiments not independently reproduced"
+    },
+    {
+      "id": "b49696a3d734553289da439f8604af0a",
+      "title": "The evolution of file carving",
+      "url": "https://consensus.app/papers/the-evolution-of-file-carving-pal-memon/b49696a3d734553289da439f8604af0a/?utm_source=chatgpt",
+      "metadata": {
+        "authors": "Anandabrata Pal, N. Memon",
+        "publish_year": "2009",
+        "journal": "IEEE Signal Processing Magazine",
+        "volume": "26",
+        "pages": "59-71",
+        "citation_count": "174"
+      },
+      "scope": "Record and abstract fetched; numerical experiments not independently reproduced"
+    },
+    {
+      "id": "db87ad745094586b93ad99e8f317f68c",
+      "title": "Techniques for Measuring the Probability of Adjacency between Carved Video Fragments: The VidCarve Approach",
+      "url": "https://consensus.app/papers/techniques-for-measuring-the-probability-of-adjacency-alghafli-yeun/db87ad745094586b93ad99e8f317f68c/?utm_source=chatgpt",
+      "metadata": {
+        "authors": "K. Alghafli, C. Yeun, E. Damiani",
+        "publish_year": "2019",
+        "journal": "IEEE Transactions on Sustainable Computing",
+        "volume": "6",
+        "pages": "131-143",
+        "citation_count": "5"
+      },
+      "scope": "Record and abstract fetched; numerical experiments not independently reproduced"
+    }
+  ],
+  "filesystem_tools": {
+    "observed_version": "The Sleuth Kit 4.14.0",
+    "read_only_commands": [
+      "fsstat -V",
+      "fsstat -f exfat IMAGE",
+      "fls -f exfat IMAGE [INODE]",
+      "fsstat -f fat IMAGE",
+      "fls -f fat IMAGE [INODE]",
+      "istat -f fat IMAGE INODE"
+    ],
+    "header_version": "4.14.0",
+    "context7": "No relevant TSK library entry; primary documentation and installed headers used"
+  },
+  "scope": "Greenfield design only. Read-only metadata probes, no full-image hashing, media export, decoder validation or production algorithm test. No current implementation consulted.",
+  "mp4_followup": {
+    "user_clarification": "Use case primarily MP4 files",
+    "interaction_id": "9OYBLoIKRHiuE2KUoz8fvg",
+    "provider_report_sha256": "b6b3275da36d7b07aa99aad9a0bcfaa03717b0cd854458103996d621d2988737",
+    "provider_report_path": "docs/designs/image-first-video-restoration/research/mp4/Examine the scientific evidence for a practical, pro-consumer grade VIDEO FILE R.md",
+    "original_report_preserved": true,
+    "independent_primary_sources": [
+      "https://dfrws.org/wp-content/uploads/2019/06/2014_EU_paper-forensic_analysis_of_video_file_formats.pdf",
+      "https://thesai.org/Downloads/Volume7No3/Paper_13-Corrupted_MP4_Carving_Using_MP4_Karver.pdf",
+      "https://github.com/anthwlock/untrunc",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC7160908/"
+    ]
+  }
+}

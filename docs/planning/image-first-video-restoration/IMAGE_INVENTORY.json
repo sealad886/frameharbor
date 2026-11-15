@@ -1,0 +1,315 @@
+{
+  "inspected_at_utc": "2026-11-09T09:25:02.428224+00:00",
+  "normal_budget_hours_per_image": 24,
+  "source_directory": "/Volumes/recovery_external",
+  "total_image_bytes": 1253697155072,
+  "images": [
+    {
+      "image": "/Volumes/recovery_external/BlinkDrive_Nov.img",
+      "bytes": 250147241984,
+      "allocated_bytes": 250147241984,
+      "mapfile": "/Volumes/recovery_external/BlinkDrive_Nov.map",
+      "scope": "read-only bounded headers and complete small mapfile; no filesystem consistency scan or media validation",
+      "map_status_bytes": {
+        "+": 250147241984
+      },
+      "map_blocks": [
+        [
+          0,
+          250147241984,
+          "+"
+        ]
+      ],
+      "map_sha256": "5134fd6929197a84ca789265615295843540bb5ae141cf31488f0afb54e185a9",
+      "map_command_comment": "ddrescue --ask --verbose --sector-size=512 --retry-passes=1 /dev/rdisk21s1 /Volumes/recovery_external/BlinkDrive_Nov.img /Volumes/recovery_external/BlinkDrive_Nov.map",
+      "partitions": [
+        {
+          "image_offset": 0,
+          "kind": "volume-at-image-start",
+          "boot_oem": "EXFAT   ",
+          "boot_signature": "55aa",
+          "boot_sha256_4096bytes": "32c6124b4d7e0ad3c2a87e15c764cd4408513b82fe837f4432c5afcff229a838",
+          "detected": "exFAT",
+          "bytes_per_sector": 512,
+          "sectors_per_cluster": 256,
+          "number_of_fats": 1,
+          "volume_serial_hex": "0x6ab10f8e",
+          "root_directory_first_cluster": 5,
+          "cluster_count": 1908400,
+          "fat_sector_offset": 2048,
+          "fat_sector_length": 16384,
+          "cluster_heap_sector_offset": 18432
+        }
+      ],
+      "header_sha256_4096bytes": "32c6124b4d7e0ad3c2a87e15c764cd4408513b82fe837f4432c5afcff229a838",
+      "mbr_signature": "55aa"
+    },
+    {
+      "image": "/Volumes/recovery_external/BlinkDrive_Rescue_2.img",
+      "bytes": 250147241984,
+      "allocated_bytes": 250147241984,
+      "mapfile": "/Volumes/recovery_external/BlinkDrive_Rescue_2.map",
+      "scope": "read-only bounded headers and complete small mapfile; no filesystem consistency scan or media validation",
+      "map_status_bytes": {
+        "+": 250147241984
+      },
+      "map_blocks": [
+        [
+          0,
+          250147241984,
+          "+"
+        ]
+      ],
+      "map_sha256": "a6548c193a7466a75919dcc0da4979dd484491f09da97bfa01119322eb61fe58",
+      "map_command_comment": "ddrescue --ask --verbose --sector-size=512 --retry-passes=1 /dev/rdisk21s1 /Volumes/recovery_external/BlinkDrive_Rescue_2.img /Volumes/recovery_external/BlinkDrive_Rescue_2.map",
+      "partitions": [
+        {
+          "image_offset": 0,
+          "kind": "volume-at-image-start",
+          "boot_oem": "EXFAT   ",
+          "boot_signature": "55aa",
+          "boot_sha256_4096bytes": "f162f54257535705f77efb1d38e1b239bc5730999eb986798518c06b2fb09e0a",
+          "detected": "exFAT",
+          "bytes_per_sector": 512,
+          "sectors_per_cluster": 256,
+          "number_of_fats": 1,
+          "volume_serial_hex": "0x6ab10f8e",
+          "root_directory_first_cluster": 5,
+          "cluster_count": 1908400,
+          "fat_sector_offset": 2048,
+          "fat_sector_length": 16384,
+          "cluster_heap_sector_offset": 18432
+        }
+      ],
+      "header_sha256_4096bytes": "f162f54257535705f77efb1d38e1b239bc5730999eb986798518c06b2fb09e0a",
+      "mbr_signature": "55aa"
+    },
+    {
+      "image": "/Volumes/recovery_external/BlinkDrive_Rescue_3.img",
+      "bytes": 250147241984,
+      "allocated_bytes": 250147241984,
+      "mapfile": "/Volumes/recovery_external/BlinkDrive_Rescue_3.map",
+      "scope": "read-only bounded headers and complete small mapfile; no filesystem consistency scan or media validation",
+      "map_status_bytes": {
+        "+": 250147241984
+      },
+      "map_blocks": [
+        [
+          0,
+          250147241984,
+          "+"
+        ]
+      ],
+      "map_sha256": "0fe73208787c9c07fd505aa055ad3c21d6fef7e3dc7c9799907256d24720db77",
+      "map_command_comment": "ddrescue --ask --verbose --sector-size=512 --retry-passes=1 /dev/rdisk21s1 /Volumes/recovery_external/BlinkDrive_Rescue_3.img /Volumes/recovery_external/BlinkDrive_Rescue_3.map",
+      "partitions": [
+        {
+          "image_offset": 0,
+          "kind": "volume-at-image-start",
+          "boot_oem": "EXFAT   ",
+          "boot_signature": "55aa",
+          "boot_sha256_4096bytes": "7adb28cffdf5b0187fb28030d3f64aba88853b228fdb210abd537f4b66fdaa04",
+          "detected": "exFAT",
+          "bytes_per_sector": 512,
+          "sectors_per_cluster": 256,
+          "number_of_fats": 1,
+          "volume_serial_hex": "0x6ab10f8e",
+          "root_directory_first_cluster": 5,
+          "cluster_count": 1908400,
+          "fat_sector_offset": 2048,
+          "fat_sector_length": 16384,
+          "cluster_heap_sector_offset": 18432
+        }
+      ],
+      "header_sha256_4096bytes": "7adb28cffdf5b0187fb28030d3f64aba88853b228fdb210abd537f4b66fdaa04",
+      "mbr_signature": "55aa"
+    },
+    {
+      "image": "/Volumes/recovery_external/BlinkDrive_Rescue_new.img",
+      "bytes": 250147241984,
+      "allocated_bytes": 250147241984,
+      "mapfile": "/Volumes/recovery_external/BlinkDrive_Rescue_new.map",
+      "scope": "read-only bounded headers and complete small mapfile; no filesystem consistency scan or media validation",
+      "map_status_bytes": {
+        "+": 250147241984
+      },
+      "map_blocks": [
+        [
+          0,
+          250147241984,
+          "+"
+        ]
+      ],
+      "map_sha256": "d2ff3b96d9b0036089f4c82fd43805b8a12d9bd5853a31ad4f346fe1160d697e",
+      "map_command_comment": "ddrescue --ask --verbose --sector-size=512 --retry-passes=1 /dev/rdisk10s1 /Volumes/recovery_external/BlinkDrive_Rescue_new.img /Volumes/recovery_external/BlinkDrive_Rescue_new.map",
+      "partitions": [
+        {
+          "image_offset": 0,
+          "kind": "volume-at-image-start",
+          "boot_oem": "EXFAT   ",
+          "boot_signature": "55aa",
+          "boot_sha256_4096bytes": "84d815870f44bf4f33c34adceb45003a6df3249ccc44c96d282cbaed9f90ef9b",
+          "detected": "exFAT",
+          "bytes_per_sector": 512,
+          "sectors_per_cluster": 256,
+          "number_of_fats": 1,
+          "volume_serial_hex": "0x6ab10f8e",
+          "root_directory_first_cluster": 5,
+          "cluster_count": 1908400,
+          "fat_sector_offset": 2048,
+          "fat_sector_length": 16384,
+          "cluster_heap_sector_offset": 18432
+        }
+      ],
+      "header_sha256_4096bytes": "84d815870f44bf4f33c34adceb45003a6df3249ccc44c96d282cbaed9f90ef9b",
+      "mbr_signature": "55aa"
+    },
+    {
+      "image": "/Volumes/recovery_external/KITCHEN_Rescue.img",
+      "bytes": 63277046784,
+      "allocated_bytes": 63277047808,
+      "mapfile": "/Volumes/recovery_external/KITCHEN_Rescue.map",
+      "scope": "read-only bounded headers and complete small mapfile; no filesystem consistency scan or media validation",
+      "map_status_bytes": {
+        "+": 63277046784
+      },
+      "map_blocks": [
+        [
+          0,
+          63277046784,
+          "+"
+        ]
+      ],
+      "map_sha256": "99d1b154e709fc5e1408f83f127808e12d0c9c5df32e65be0fdbbacf2bb30da5",
+      "map_command_comment": "ddrescue --ask --verbose --sector-size=512 --retry-passes=1 /dev/rdisk22s1 /Volumes/recovery_external/KITCHEN_Rescue.img /Volumes/recovery_external/KITCHEN_Rescue.map",
+      "partitions": [
+        {
+          "image_offset": 0,
+          "kind": "volume-at-image-start",
+          "boot_oem": "mkdosfs\u0000",
+          "boot_signature": "55aa",
+          "boot_sha256_4096bytes": "fc49a1a760a3a66ba3ac26393349b0f790458422f081411ddc184f537791e542",
+          "detected": "FAT32",
+          "bytes_per_sector": 512,
+          "sectors_per_cluster": 32,
+          "volume_serial_hex": "0x65c86355",
+          "root_directory_first_cluster": 2
+        }
+      ],
+      "header_sha256_4096bytes": "fc49a1a760a3a66ba3ac26393349b0f790458422f081411ddc184f537791e542",
+      "mbr_signature": "55aa"
+    },
+    {
+      "image": "/Volumes/recovery_external/KITCHEN_Rescue_3.img",
+      "bytes": 63277046784,
+      "allocated_bytes": 63277047808,
+      "mapfile": "/Volumes/recovery_external/KITCHEN_Rescue_3.map",
+      "scope": "read-only bounded headers and complete small mapfile; no filesystem consistency scan or media validation",
+      "map_status_bytes": {
+        "+": 63277046784
+      },
+      "map_blocks": [
+        [
+          0,
+          63277046784,
+          "+"
+        ]
+      ],
+      "map_sha256": "a76d8f4826b57a1798628436b8c9da6cd92f289c70235341ac3906e4497efca2",
+      "map_command_comment": "ddrescue --ask --verbose --sector-size=512 --retry-passes=1 /dev/rdisk24s1 /Volumes/recovery_external/KITCHEN_Rescue_3.img /Volumes/recovery_external/KITCHEN_Rescue_3.map",
+      "partitions": [
+        {
+          "image_offset": 0,
+          "kind": "volume-at-image-start",
+          "boot_oem": "mkdosfs\u0000",
+          "boot_signature": "55aa",
+          "boot_sha256_4096bytes": "90c58ad73fae8041f9d08029060eb460bfa4d81c23d34e51baf470af40079b7e",
+          "detected": "FAT32",
+          "bytes_per_sector": 512,
+          "sectors_per_cluster": 32,
+          "volume_serial_hex": "0x65c86355",
+          "root_directory_first_cluster": 2
+        }
+      ],
+      "header_sha256_4096bytes": "90c58ad73fae8041f9d08029060eb460bfa4d81c23d34e51baf470af40079b7e",
+      "mbr_signature": "55aa"
+    },
+    {
+      "image": "/Volumes/recovery_external/KITCHEN_Rescue_new.img",
+      "bytes": 63277046784,
+      "allocated_bytes": 63277047808,
+      "mapfile": "/Volumes/recovery_external/KITCHEN_Rescue_new.map",
+      "scope": "read-only bounded headers and complete small mapfile; no filesystem consistency scan or media validation",
+      "map_status_bytes": {
+        "+": 63277046784
+      },
+      "map_blocks": [
+        [
+          0,
+          63277046784,
+          "+"
+        ]
+      ],
+      "map_sha256": "eb6fd73522c9dabe9aeec4b7244d052995ed0883d91b5af149b93e0b4da77154",
+      "map_command_comment": "ddrescue --ask --verbose --sector-size=512 --retry-passes=1 /dev/rdisk11s1 /Volumes/recovery_external/KITCHEN_Rescue_new.img /Volumes/recovery_external/KITCHEN_Rescue_new.map",
+      "partitions": [
+        {
+          "image_offset": 0,
+          "kind": "volume-at-image-start",
+          "boot_oem": "mkdosfs\u0000",
+          "boot_signature": "55aa",
+          "boot_sha256_4096bytes": "a5da084eaf68c5845f519d1ffe7b60b9f7b404901ea7abf54eef7c7b77e9d3dd",
+          "detected": "FAT32",
+          "bytes_per_sector": 512,
+          "sectors_per_cluster": 32,
+          "volume_serial_hex": "0x6a3f3c19",
+          "root_directory_first_cluster": 2
+        }
+      ],
+      "header_sha256_4096bytes": "a5da084eaf68c5845f519d1ffe7b60b9f7b404901ea7abf54eef7c7b77e9d3dd",
+      "mbr_signature": "55aa"
+    },
+    {
+      "image": "/Volumes/recovery_external/NO NAME_Rescue.img",
+      "bytes": 63277046784,
+      "allocated_bytes": 63277047808,
+      "mapfile": "/Volumes/recovery_external/NO NAME_Rescue.map",
+      "scope": "read-only bounded headers and complete small mapfile; no filesystem consistency scan or media validation",
+      "map_status_bytes": {
+        "+": 63277046784
+      },
+      "map_blocks": [
+        [
+          0,
+          63277046784,
+          "+"
+        ]
+      ],
+      "map_sha256": "56ea45901a97e43e60687eae420332893cf64d965fadef3dde5a0a5760bf3ee7",
+      "map_command_comment": "ddrescue --ask --verbose --sector-size=512 --retry-passes=1 /dev/rdisk7s1 /Volumes/recovery_external/NO NAME_Rescue.img /Volumes/recovery_external/NO NAME_Rescue.map",
+      "partitions": [
+        {
+          "image_offset": 0,
+          "kind": "volume-at-image-start",
+          "boot_oem": "mkdosfs\u0000",
+          "boot_signature": "55aa",
+          "boot_sha256_4096bytes": "ce6dc308a8f6c13975cb8095418e22d75c601c3f884ffdc35a24520f93710dd5",
+          "detected": "FAT32",
+          "bytes_per_sector": 512,
+          "sectors_per_cluster": 32,
+          "volume_serial_hex": "0x6a3f3c19",
+          "root_directory_first_cluster": 2
+        }
+      ],
+      "header_sha256_4096bytes": "ce6dc308a8f6c13975cb8095418e22d75c601c3f884ffdc35a24520f93710dd5",
+      "mbr_signature": "55aa"
+    }
+  ],
+  "limitations": [
+    "No full image checksum or cross-image equality established",
+    "MBR partition offsets probed under an explicit 512-byte sector hypothesis; filesystem self-description checked separately",
+    "A matching volume serial/boot hash is a grouping hint, not proof that acquisitions contain identical data",
+    "Mapfile status is acquisition evidence, not a guarantee that video data is logically intact",
+    "No original filesystem or image was mounted or modified"
+  ]
+}

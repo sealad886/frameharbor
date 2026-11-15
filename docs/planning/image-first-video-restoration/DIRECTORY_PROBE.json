@@ -1,0 +1,72 @@
+{
+  "scope": "Nonrecursive first-level subdirectory metadata; no media extraction or validation",
+  "directories": [
+    {
+      "command": [
+        "/usr/local/bin/fls",
+        "-f",
+        "exfat",
+        "/Volumes/recovery_external/BlinkDrive_Rescue_new.img",
+        "12300"
+      ],
+      "exit_code": 0,
+      "entry_count": 4,
+      "entry_types": {
+        "d/d": 4
+      },
+      "extensions": {},
+      "first_8_lines": [
+        "d/d 466947:\t26-09",
+        "d/d * 466950:\t.tmp",
+        "d/d 466953:\t26-10",
+        "d/d 466956:\t.recs"
+      ],
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/local/bin/fls",
+        "-f",
+        "exfat",
+        "/Volumes/recovery_external/BlinkDrive_Rescue_new.img",
+        "12306"
+      ],
+      "exit_code": 0,
+      "entry_count": 0,
+      "entry_types": {},
+      "extensions": {},
+      "first_8_lines": [],
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/local/bin/fls",
+        "-f",
+        "fat",
+        "/Volumes/recovery_external/KITCHEN_Rescue_new.img",
+        "4"
+      ],
+      "exit_code": 0,
+      "entry_count": 77,
+      "entry_types": {
+        "r/r": 6,
+        "d/d": 71
+      },
+      "extensions": {
+        ".mp4": 1,
+        ".h265": 5
+      },
+      "first_8_lines": [
+        "r/r * 1031:\t20261029230102_A_tmp.mp4",
+        "r/r 1034:\t20260715123101_A_tmp.h265",
+        "r/r * 1037:\t20261029230102_A_tmp.h265",
+        "d/d 1038:\t20260912",
+        "d/d 1039:\t20260913",
+        "d/d 1040:\t20260914",
+        "d/d 1041:\t20260915",
+        "d/d 1042:\t20260916"
+      ],
+      "stderr": ""
+    }
+  ]
+}

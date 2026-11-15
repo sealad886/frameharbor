@@ -1,0 +1,48 @@
+{
+  "review_scope": "MP4-primary design correction; earlier design reviews retained as historical coverage",
+  "historical_review_receipt": "docs/designs/image-first-video-restoration/research/reviews/initial-design-review.json",
+  "independent_reviewers": [
+    {
+      "role": "Reality Checker",
+      "agent": "image_restoration_design/accuracy_challenge",
+      "outcome": "qualified PASS correction scope; no blocking finding",
+      "verified_sha256": {
+        "DESIGN.md": "5db51aa6f6272557aadc7dd20118877b81a20c92cc473b7a06769ef424ed6c9a",
+        "IMPLEMENTATION_PLAN.md": "dd12f4671ac5e1c1a0e737999d8bc24fe119e1d4b22f8ce329b5e69decc392d7"
+      }
+    }
+  ],
+  "corrections": [
+    "MP4 is primary; raw Annex B is secondary/optional and cannot consume default MP4 budget",
+    "Ordinary MP4 filesystem fragmentation distinguished from ISO fMP4",
+    "MP4 damage/recovery/claim decision matrix",
+    "Donor codec/configuration aid cannot establish missing original sample tables or timing",
+    "Direct MP4 evidence separated from structural studies, raw/DVR work and limited demonstrations",
+    "MP4-specific sample/order/timing/audio and false-join release gates"
+  ],
+  "documentation_checks": {
+    "status": "passed",
+    "checked_at": "2026-11-09T15:59:25.775731+00:00",
+    "local_links": 46,
+    "milestones": 12,
+    "json_documents": 9,
+    "original_consensus_report_unchanged": true,
+    "mp4_consensus_addendum_verbatim": true,
+    "balanced_fences": true,
+    "trailing_whitespace": false
+  },
+  "not_established": [
+    "Software implementation correctness",
+    "Recovery yield",
+    "Measured accuracy",
+    "24-hour end-to-end performance"
+  ],
+  "implementation_tests": "Not run: documentation-only correction",
+  "document_sha256": {
+    "README.md": "466e5c45dc55348c2cba35f1f574d0a2eeef93f2a9e677ab90998b50ffc4b466",
+    "DESIGN.md": "5db51aa6f6272557aadc7dd20118877b81a20c92cc473b7a06769ef424ed6c9a",
+    "IMPLEMENTATION_PLAN.md": "dd12f4671ac5e1c1a0e737999d8bc24fe119e1d4b22f8ce329b5e69decc392d7",
+    "EVIDENCE.md": "4dbea08d16df16db8a0067b840d7d528cd235038920001b1894ad4d0414f01ee",
+    "CONSENSUS_RESEARCH.md": "822f2f211c14f8aeda54e8ec31032131a3b6b03e2144c2bd306b2ed0ce89ceb8"
+  }
+}
