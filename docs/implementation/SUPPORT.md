@@ -1,0 +1,41 @@
+# Support and qualification envelope
+
+Status: foundation support and target matrix, 9 November 2026. A target below is not implemented or qualified merely because a tool is installed. Consult [STATUS.md](STATUS.md) for live milestone evidence.
+
+The selected M1 acquisition contract passed independent synthetic review: bounded map parsing, explicit binding/relocation, masked read-only ranges, observed-generation checks, source dependency hashes, bounded eligible-range pilot and storage observations. This qualifies that library contract on the tested host, not filesystem/media recovery. Shared serial case admission, source dependency checks and durable controls are integrated. These range tests alone do not qualify media recovery or host-wide aggregate RSS.
+
+M2 provides tested SQLite ledger, serial case control and frontier checkpoint components. Subsequent M4/M6 work adds sealed unchanged-original media validation and publication alongside explicitly typed synthetic fixtures. Publication uses same-filesystem no-clobber hard links and directory fsync. Unsupported destination semantics fail explicitly. Process fault tests do not certify physical power-loss behavior; normal controls now pass bounded synthetic end-to-end checks; representative consumer/hardware acceptance remains pending.
+
+| Profile | Release target | Qualification required |
+| --- | --- | --- |
+| Raw ddrescue disk/partition image and map | Mandatory input | Explicit coordinate/binding evidence, all statuses and gaps, bounded read-only access, source-change tests |
+| FAT32, 16 KiB clusters | Core filesystem | Valid allocated chains, qualified deleted/partial chains, bounds, reuse/crosslinks, logical reads across clusters |
+| exFAT, 128 KiB clusters | Core filesystem | FAT chains and `NoFatChain`, allocation bitmap and stream metadata agreement, stale/deleted ownership qualification |
+| Ordinary MP4 AVC/H.264 | Primary container/codec target | Supported sample tables and configurations, original sample/timing oracle, strict full decode |
+| Ordinary MP4 HEVC/H.265 | Primary container/codec target | Same, plus CRA/leading-picture and dependency handling |
+| MP4 audio | Core target with explicit selected configurations | Original packet sizes/configuration, interleaving, DTS/PTS, priming/edits and synchronization; selected mathematical AAC-LC fixtures pass, general camera qualification remains pending |
+| ISO fragmented MP4 | Separate target stratum | Initialization/defaults/addressing, evidenced membership, missing fragments/init, reset IDs/counters |
+| Raw Annex B | Optional R1, disabled | Separate authorization/scope and affected repeated gates |
+| APFS, NTFS, ext4, encryption, DRM, external data references | Unsupported | Separate adapter/profile certification; never silently infer support |
+
+The current parser and native pins declare a bounded development envelope; release media brands, sample entries, AVC/HEVC levels, NAL widths and audio configurations are **not fully qualified**. Unsupported variants return explicit limitations, not decoder-pass exactness. Optional donors supply codec/configuration/layout priors only. Missing target sample tables, timing or ownership remain inferred/unresolved. Acquisition-missing payload retains known target placement/timing and explicit unavailable status; it cannot enter the exact sample map or sealed whole-file publication path.
+
+No real-image yield, intact historical ownership, whole-family completion time or 24-hour hardware envelope is qualified. The existing planning probes are historical observations. The full seven-row damage matrix and representative consumer/hardware acceptance still require measured qualification before release. Normal start/inspect/pause/cancel/resume/export controls now use one durable case authority; export continues pending work. Read-only inspection labels stored receipts separately from a fresh payload hash verdict.
+
+
+## Selected synthetic profiles now exercised
+
+Unchanged ordinary MP4 accepts the implemented `avc1`/`hvc1` and AAC-LC table/configuration envelope. Eight exposed mathematical AVC/HEVC × head/tail movie-box × CFR/VFR profiles include B frames and AAC. Actual staged bytes are independently compared against source sample identity/configuration/timing and fully decoded before publication. These foundational profiles use 64×64 frames. Separate exposed [720p/1080p codec controls](CODEC_CONTROLS.md) now pass staging and full validation with stereo AAC 48 kHz, using a synthetic direct-layout oracle. They qualify only those mathematical codec controls, not filesystem/camera support or 4K.
+
+Conservative segment planning accepts verified AVC IDR and HEVC IDR_N_LP (type 20), keeps original encoded samples and physical provenance, and splits only at verified closed-IDR boundaries. Holes, incomplete GOPs, CRA/type 19, in-band configuration, unsupported dependency groups and unproven audio alignment remain qualified or unresolved. Synthesized headers, rebased timestamps, dropped edits and missing/partial audio are explicit. Segment receipts assert repaired structure and constrained presentation; they cannot assert unchanged original files or complete recordings. Mapping/span/receipt caps are checked before expensive output validation; oversized single GOPs remain unresolved.
+
+The selected fMP4 parser handles established-file initialization/defaults, explicit or moof-relative bases, signed data/composition offsets and multiple tracks/runs. Missing initialization, ambiguous bases, sequence discontinuities and decode-time gaps/resets do not autojoin. Selected fMP4 source segments pass the same independent source-to-output and strict-decoder boundary; ordinary disk fragmentation remains a separate filesystem concern.
+
+Native TSK 4.14.0 speculative cache requests receive only the acquired contiguous prefix. Requested and delivered bytes are distinct counters. Missing requested metadata still fails; unavailable suffixes are never filled with zeros or stale image bytes. Native parser isolation, CPU/VM/IPC bounds and actual child reaping are tested; exploitation-resistant OS confinement and hard host RSS are unqualified.
+
+Current live source dependencies are capped at 1,024 unique geometries; checkpoint-linked immutable archives allow bounded batches to retire from RAM and stream verification on resume. Archive storage remains bounded to 1,024 blocks/64 MiB. Durable inode/entry cursors and a same-Ledger global geometry index support more than 1,024 namespace entries without treating partial discovery as qualified. Per-batch run/allocation budgets resume at the first unreported file; a single file exceeding the allocation envelope remains explicitly unchecked. The selected discovery domain is allocated reachable native names, excluding only pinned TSK synthetic virtual types. Orphan/deleted/unreadable scope is reported separately. TSK materializes one directory listing, so extreme flat-directory memory/reopen cost is not qualified.
+
+Bounded CPU permits batch at most 128 metadata probes; actual source reads remain individually and durably charged. Pending-only SQL pages and atomic outcome batches avoid per-file completed-work replay. Tiny sparse namespace fixtures and this measurement harness do not establish 24-hour complete-image performance. Representative allocated-image density, camera codec profiles, aggregate native/parent RSS, physical I/O and hardware acceptance remain unqualified.
+
+
+The final frozen-source selected software gate passes 212 tests across 28 targets under Rust 1.98.1 with offline locked dependencies, plus formatting, all-target Clippy, release/native builds and local package hash/help verification. These are exposed synthetic/control tests. The frozen local package passed a [bounded prospective procedural evaluation](PROSPECTIVE_EVALUATION.md): seven controls from two original configuration families, with correlated filesystem/damage variants. Four intact files matched independent byte/sample/timing/audio oracles and full strict decoding; two metadata-hole controls stayed unresolved and an overlapping map was rejected. This adds no real-camera, full damage-matrix, statistical false-join or sustained hardware claim. Full M7 representative hardware, external M10 acceptance and M11 real-image rollout remain unqualified.

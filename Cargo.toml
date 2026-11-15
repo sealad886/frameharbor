@@ -1,0 +1,16 @@
+[package]
+name = "frameharbor"
+version = "0.1.0-alpha.1"
+edition = "2024"
+rust-version = "1.98"
+publish = false
+description = "Evidence-driven read-only MP4 recovery contracts and engine"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/sealad886/frameharbor"
+
+[dependencies]
+sha2 = "=0.10.9"
+rusqlite = { version = "=0.41.1", default-features = false, features = ["bundled"] }
+
+[profile.release]
+overflow-checks = true

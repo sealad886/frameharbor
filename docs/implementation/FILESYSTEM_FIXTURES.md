@@ -1,0 +1,22 @@
+# M3 filesystem fixture receipts
+
+These project-owned fixtures exercise logical byte placement and ownership evidence only. `RECORD.MP4` contains deterministic arbitrary bytes with a recognizable `ftyp` prefix; it is not a playable or codec-qualified MP4. No real image, private recording, mounted filesystem, device, or formatter was used.
+
+`tests/common/filesystems.rs` constructs each raw partition image and map in a unique owned temporary directory. The retained original bytes and ordered `(logical offset, image offset, length)` oracle are written outside the image to `original.bin` and `truth-spans.txt`. Tests compare actual physical reads against that independent oracle; they do not derive ground truth from the product adapter. Drop removes only the fixture's own temporary directory.
+
+| Profile | Logical image bytes | Observed host allocation for intact fragmented case | Geometry |
+| --- | ---: | ---: | --- |
+| FAT32 | 1,074,283,520 | 671,744 | 512-byte sectors, 16 KiB clusters, 65,536 data clusters, two 513-sector FATs, root cluster 2 |
+| exFAT | 4,325,376 | 4,325,376 | 512-byte sectors, 128 KiB clusters, 32 clusters, one FAT, root/bitmap/upcase clusters 2/3/4 |
+
+Allocation observations are from the current host, not performance evidence. `set_len` avoids writing the whole logical image, but this host allocates the small exFAT image fully; do not call it physically sparse. FAT32 must exceed 65,525 data clusters to remain FAT32 rather than become a mislabeled FAT16 fixture. The tests bound actual temporary allocation below 16 MiB per fixture and do not read the entire GiB image.
+
+Both profiles store a cluster-plus-257-byte payload at cluster 5 followed by cluster 9 (fragmented) or 6 (contiguous). The extent boundary therefore lies inside arbitrary logical payload. exFAT contiguous files set `NoFatChain`; their FAT entry is deliberately unusable, because stream flags and allocation bitmap must establish that layout. The exFAT boot record retains the historical 2,048-sector partition offset while the filesystem is at image offset zero.
+
+Variants retain payload bytes while changing evidence: deleted directory entries, broken first chain link, shared first-cluster owners, exFAT bitmap-free second cluster, a nonfinished map region over the second payload span, and a separate nonfinished region over root metadata. Deleted/bitmap-conflict evidence cannot establish intact historical ownership. Partial chains and acquisition holes cannot establish complete logical recovery. Crosslinks retain shared geometry. `BitmapFree` applies only to exFAT; `PartialChain` is inapplicable to exFAT `NoFatChain` fixtures.
+
+The exFAT fixtures include main/backup boot regions, boot checksums, allocation bitmap, an ASCII-name upcase table with compressed identity runs and a checksum, file-entry-set checksum/name hash, and valid timestamps. This narrow ASCII-name corpus does not certify general Unicode names or arbitrary filesystem implementations. Layout follows Microsoft's [exFAT specification](https://learn.microsoft.com/en-us/windows/win32/fileio/exfat-specification) and the [FAT32 specification download](https://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/fatgen103.doc); the latter binary document was not readable through the web text tool. The fixture tests separately check FAT32 cluster geometry and independently recompute exFAT boot/entry checksums.
+
+On 9 November 2026, installed TSK 4.14.0 `fls` recognized `RECORD.MP4` in both intact fragmented profiles; FAT32 `fsstat` also succeeded. exFAT `fsstat` exceeded repeated five-second bounds and was terminated; this utility path is not qualified. A prior invalid raw upcase-table terminator and zero exFAT timestamps were corrected before the successful `fls` check. Those failures were fixture defects, not recovery successes. Native helper qualification must use bounded processes and cannot infer generic parser reliability from `fls` recognition.
+
+Validation: `cargo test --test filesystem_fixtures --offline --locked` with actual Rust/Cargo 1.98.1 passed four tests covering 25 valid profile/layout/damage combinations, known byte reconstruction, geometry/checksums, and declared holes with stale image bytes. This does not accept the entire M3 gate: adapter evidence, partial/deleted/conflicting extents, masked metadata, malformed-input limits and source-read accounting require separate product tests.
